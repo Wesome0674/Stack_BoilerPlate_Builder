@@ -15,7 +15,7 @@ This project is a CLI tool that allows you to build a boilerplate for a web proj
 ### Clone the repository
 
 ```bash
-git clone https://github.com/CodeByKillian/Stack_BoilerPlate_Builder.git
+git clone https://github.com/Wesome0674/Stack_BoilerPlate_Builder
 ```
 
 ### Run the script
