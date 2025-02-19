@@ -1,0 +1,10 @@
+ :root {
+    --primary-color: #fff;
+    --secondary-color: #000000;
+ }
+
+ body {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+ }
+ 
