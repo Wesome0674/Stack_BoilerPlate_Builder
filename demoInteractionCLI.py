@@ -15,7 +15,7 @@ class Questionner:
         return projectName
     
     def askProjectType(self):
-        projectType = input("Quel est le type du projet? (web/next)") # ask the project type
+        projectType = input("Quel est le type du projet? (web/next/vue)") # ask the project type
         return projectType
 
     def askProjectStyle(self):
@@ -117,7 +117,7 @@ name = questionner.askProjectName() # ask the project name
 if type == "web":
     style = questionner.askProjectStyle() # ask the project style
     questionner.askTag() # ask the tags
-elif type == "next":
+elif type == "next" or type == "vue":
      pass
 else:
     print("Type de projet non valide")

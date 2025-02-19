@@ -115,9 +115,22 @@ class ProjectGenerator:
                     exit(1)
             else:
                 print("The project already exists")
+        elif self.type == "vue":
+            if not os.path.exists(folder_name):
+                print("Creating Vue project...")
+                try:
+                    # Run create-vue command with shell=True
+                    subprocess.run("npx create-vue@latest " + folder_name, 
+                                 shell=True, 
+                                 check=True) 
+                    print(f"Vue project '{folder_name}' created successfully!") 
+                except subprocess.CalledProcessError as e:
+                    print(f"Error creating Vue project: {e}") # if the command fails, print the error
+                    exit(1)
         else:
             print("The project type is not valid. Available types: 'web', 'next'") # if the project type is not valid, print the error
             exit()
+        
     
     
 webProject = ProjectGenerator(type) # create a ProjectGenerator object
