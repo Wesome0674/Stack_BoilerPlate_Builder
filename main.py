@@ -88,7 +88,7 @@ class ProjectGenerator:
                 os.makedirs(folder_name + "/styles") 
 
                 # Create HTML file in root
-                self.fileManager.create_file(folder_name + "/index", questionner.buildHTML().to_string(prettify=True), ".html")
+                self.fileManager.create_file(folder_name + "/index", questionner.buildHTML(), ".html")
                 
                 # Create CSS files in styles folder
                 self.fileManager.create_file(folder_name + "/styles/" + style, questionner.buildCSS(), ".css")

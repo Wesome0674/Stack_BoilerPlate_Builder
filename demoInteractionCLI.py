@@ -64,6 +64,10 @@ class Questionner:
             return self.args # return the dictionary of arguments
         
     def buildHTML(self): # build the HTML object
+        page = ""
+        doctype = HTMLDOCTYPE("")
+        page += doctype.to_string(prettify=True)
+        # Add head and body to HTML tag
         self.html.add([
             Head("").add([
                 Meta("", {"charset":"UTF-8"}),
@@ -74,7 +78,9 @@ class Questionner:
             ]),
             self.body
         ])
-        return self.html
+        page += self.html.to_string(prettify=True)
+        # Return DOCTYPE followed by HTML
+        return page
     
     def buildCSS(self): # build the CSS object
         theme = ""

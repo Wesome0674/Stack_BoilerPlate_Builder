@@ -14,25 +14,26 @@ class TAG:
         if prettify: # add a line break if prettify is True
             endStr = "\n"
         
+        # Handle DOCTYPE first - it's a special case
+        if self.doctype:
+            return f"<!{self.type}>" + endStr
+            
         other_tag_str = ""
         for tag in self.sub_tags:
-            other_tag_str += tag.to_string(prettify=prettify) # add the string representation of the child tags to the other_tag_str
+            other_tag_str += tag.to_string(prettify=prettify)
             
         if other_tag_str:
-            return f"<{self.type}>{other_tag_str}</{self.type}>" + endStr # return the string representation of the tag with the child tags
+            return f"<{self.type}>{other_tag_str}</{self.type}>" + endStr
         
-        if self.attributes: # add the attributes to the tag if they exist
+        if self.attributes:
             attributes = ""
             for key, value in self.attributes.items():
                 attributes += f" {key}='{value}'"
             
             if self.closing:
-                return f"<{self.type}{attributes}>{self.content}</{self.type}>" + endStr # return the string representation of the tag with the content
+                return f"<{self.type}{attributes}>{self.content}</{self.type}>" + endStr
             else:
-                return f"<{self.type}{attributes}/>" + endStr # return the string representation of the tag with the attributes
-            
-        if self.doctype: # return the string representation of the doctype
-            return f"<{self.type}{attributes}/>" + endStr 
+                return f"<{self.type}{attributes}/>" + endStr
         
         return f"<{self.type}>{self.content}</{self.type}>" + endStr
     
@@ -103,6 +104,6 @@ class Script(TAG): # Script tag
 class HTMLDOCTYPE(TAG): # HTML DOCTYPE tag
     
     def __init__(self, content, attributes=None):
-        super().__init__("!DOCTYPE html", content, attributes)
+        super().__init__("DOCTYPE html", content, attributes, doctype=True)
 
 
